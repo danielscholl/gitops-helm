@@ -7,17 +7,20 @@ This repo is a sample for gitops work.
 You will need a Kubernetes cluster.  This can be run from Azure CloudShell.
 
 ```sh
-# Setup Input Variables
+# Deploy Infrastructure
 export RESOURCE_GROUP="test-rg"
 export NAME="test"
 export AZURE_LOCATION=eastus
 
-# Deploy Infrastructure
 az group create -l $AZURE_LOCATION -n $RESOURCE_GROUP -onone && \
 az deployment group create -g $RESOURCE_GROUP  --template-uri https://github.com/Azure/AKS-Construction/releases/download/0.9.10/main.json --parameters \
 	resourceName=$NAME \
 	JustUseSystemPool=true \
-	agentCount=1 \
+	nodePoolName=nodepool1 \
+  agentCount=2 \
+  agentVMSize=Standard_DS2_v2 \
+  resourceName=az-k8s-ecoq \
+	osDiskType=Managed \
 	enableTelemetry=false \
 	fluxGitOpsAddon=true
 ```
@@ -27,12 +30,11 @@ az deployment group create -g $RESOURCE_GROUP  --template-uri https://github.com
 Create a Gitops Configuration.
 
 ```bash
-# Setup Input Variables
+# Deploy Application
 export RESOURCE_GROUP="test-rg"
 export NAME="test"
 export AZURE_LOCATION=eastus
 
-# Configure for Staging 
 az k8s-configuration flux create -g $RESOURCE_GROUP \
 	-c aks-${NAME} \
 	-n gitops-helm \
