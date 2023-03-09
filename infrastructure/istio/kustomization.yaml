@@ -4,4 +4,3 @@ resources:
 - namespace.yaml
 - istio-base.yaml
 - istio-operator.yaml
-- kiali-operator.yaml

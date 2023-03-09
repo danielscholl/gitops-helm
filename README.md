@@ -35,8 +35,8 @@ export AZURE_LOCATION=eastus
 # Configure for Staging 
 az k8s-configuration flux create -g $RESOURCE_GROUP \
 	-c aks-${NAME} \
-	-n cluster-config \
-	--namespace cluster-config \
+	-n gitops-helm \
+	--namespace flux-system \
 	-t managedClusters \
 	--scope cluster \
 	-u https://github.com/danielscholl/gitops-helm \

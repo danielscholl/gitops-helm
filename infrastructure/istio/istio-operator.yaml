@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: istio-operator
-  namespace: cluster-config
+  namespace: flux-system
 spec:
   releaseName: istio-operator
   chart:
@@ -11,7 +11,7 @@ spec:
       sourceRef:
         kind: GitRepository
         name: istio
-        namespace: cluster-config
+        namespace: flux-system
   interval: 1h0m0s
   install:
     remediation:
