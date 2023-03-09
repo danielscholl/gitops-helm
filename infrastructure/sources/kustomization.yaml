@@ -3,4 +3,7 @@ kind: Kustomization
 namespace: cluster-config
 resources:
   - bitnami.yaml
+  - istio-git.yaml
+  - istio.yaml
+  - jetstack.yaml
   - podinfo.yaml
