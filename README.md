@@ -27,6 +27,11 @@ az deployment group create -g $RESOURCE_GROUP  --template-uri https://github.com
 Create a Gitops Configuration.
 
 ```bash
+# Setup Input Variables
+export RESOURCE_GROUP="test-rg"
+export NAME="test"
+export AZURE_LOCATION=eastus
+
 # Configure for Staging 
 az k8s-configuration flux create -g $RESOURCE_GROUP \
 	-c aks-${NAME} \
