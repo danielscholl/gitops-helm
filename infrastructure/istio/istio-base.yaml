@@ -4,6 +4,7 @@ metadata:
   name: istio-base
   namespace: flux-system
 spec:
+  targetNamespace: istio-system
   releaseName: istio-base
   chart:
     spec:

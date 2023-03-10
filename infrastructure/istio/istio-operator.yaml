@@ -4,6 +4,7 @@ metadata:
   name: istio-operator
   namespace: flux-system
 spec:
+  targetNamespace: istio-system
   releaseName: istio-operator
   chart:
     spec:
