@@ -39,15 +39,6 @@ az k8s-configuration flux create -g $RESOURCE_GROUP \
 
 ## Access PodInfo
 
-Locate the public IP address of the ingress controller:
-
 ```bash
-kubectl get svc -n ingress-nginx
+curl --header "Host: podinfo.staging" http://$(kubectl get svc -n nginx nginx-ingress-controller -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
-
-Add the IP address to your hosts file:
-
-```bash
-echo "$(kubectl get svc -n ingress-nginx ingress-nginx-controller -o jsonpath='{.status.loadBalancer.ingress[0].ip}') podinfo.staging" | sudo tee -a /etc/hosts
-```
-
