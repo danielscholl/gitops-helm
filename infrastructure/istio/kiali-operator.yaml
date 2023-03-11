@@ -5,6 +5,7 @@ metadata:
   name: kiali-operator
   namespace: flux-system
 spec:
+  targetNamespace: istio-system
   releaseName: kiali-operator
   install:
     crds: Create
