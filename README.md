@@ -22,6 +22,8 @@ az deployment group create --no-wait -g $RESOURCE_GROUP  --template-uri https://
 	enableTelemetry=false \
 	fluxGitOpsAddon=true
 
+az deployment group list -g $RESOURCE_GROUP --query [].properties.provisioningState -otsv
+
 az k8s-configuration flux create -g $RESOURCE_GROUP \
 	-c aks-${NAME} \
 	-n gitops-helm \
