@@ -5,4 +5,5 @@ resources:
   - cert-manager
   - nginx
   - redis
+  - kiali
   - istio
