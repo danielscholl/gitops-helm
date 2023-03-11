@@ -12,7 +12,7 @@ export NAME="cluster"
 export AZURE_LOCATION=eastus
 
 az group create -l $AZURE_LOCATION -n $RESOURCE_GROUP -onone && \
-az deployment group create -g $RESOURCE_GROUP  --template-uri https://github.com/Azure/AKS-Construction/releases/download/0.9.10/main.json --parameters \
+az deployment group create --no-wait -g $RESOURCE_GROUP  --template-uri https://github.com/Azure/AKS-Construction/releases/download/0.9.10/main.json --parameters \
 	resourceName=$NAME \
 	JustUseSystemPool=true \
 	nodePoolName=nodepool1 \
