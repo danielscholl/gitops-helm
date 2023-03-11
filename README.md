@@ -30,8 +30,9 @@ az k8s-configuration flux create -g $RESOURCE_GROUP \
 	--scope cluster \
 	-u https://github.com/danielscholl/gitops-helm \
 	--branch main  \
-	--kustomization name=infra path=./infrastructure prune=true \
-	--kustomization name=apps path=./apps/staging prune=true dependsOn=\["infra"\]
+	--kustomization name=components path=./components prune=true \
+	--kustomization name=configuration path=./configuration prune=true dependsOn=\["components"\] \
+	--kustomization name=apps path=./apps/staging prune=true dependsOn=\["configuration"\]
 ```
 
 ## Access PodInfo
