@@ -34,26 +34,18 @@ az k8s-configuration flux create -g $RESOURCE_GROUP \
 	--kustomization name=apps path=./apps/staging prune=true dependsOn=\["infra"\]
 ```
 
-## Configuration
+## Access PodInfo
 
-Create a Gitops Configuration.
+Locate the public IP address of the ingress controller:
 
 ```bash
-# Deploy Application
-export RESOURCE_GROUP="test-rg"
-export NAME="test"
-export AZURE_LOCATION=eastus
+kubectl get svc -n ingress-nginx
+```
 
-az k8s-configuration flux create -g $RESOURCE_GROUP \
-	-c aks-${NAME} \
-	-n gitops-helm \
-	--namespace flux-system \
-	-t managedClusters \
-	--scope cluster \
-	-u https://github.com/danielscholl/gitops-helm \
-	--branch main  \
-	--kustomization name=infra path=./infrastructure prune=true \
-	--kustomization name=apps path=./apps/staging prune=true dependsOn=\["infra"\]
+Add the IP address to your hosts file:
+
+```bash
+echo "$(kubectl get svc -n ingress-nginx ingress-nginx-controller -o jsonpath='{.status.loadBalancer.ingress[0].ip}') podinfo.staging" | sudo tee -a /etc/hosts
 ```
 
 ## Repository structure
@@ -67,7 +59,7 @@ The Git repository contains the following top directories:
 ```
 ├── apps
 │   ├── base
-│   ├── production 
+│   ├── production
 │   └── staging
 ├── infrastructure
     ├── cert-manager
