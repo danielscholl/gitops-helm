@@ -4,6 +4,7 @@ namespace: flux-system
 resources:
   - bitnami.yaml
   - istio-git.yaml
+  - kiali.yaml
   - istio.yaml
   - jetstack.yaml
   - podinfo.yaml
