@@ -31,7 +31,7 @@ az k8s-configuration flux create -g $RESOURCE_GROUP \
 	-t managedClusters \
 	--scope cluster \
 	-u https://github.com/danielscholl/gitops-helm \
-	--branch main  \
+	--branch http-ingress  \
 	--kustomization name=components path=./components prune=true \
 	--kustomization name=configurations path=./configurations prune=true dependsOn=\["components"\] \
 	--kustomization name=apps path=./apps/staging prune=true dependsOn=\["configurations"\]
