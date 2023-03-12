@@ -1,0 +1,27 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: external-dns
+spec:
+  targetNamespace: tools
+  releaseName: external-dns
+  chart:
+    spec:
+      chart: external-dns
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+      # version: 5.1.1
+  values:
+    - provider: azure
+      logLevel: debug
+      txtOnwnerId: external-dns
+      azure:
+        useManagedIdentityExtension: true
+        tenantId: 5cc80b30-6dfd-4dc3-bbce-aca1faf46c4d
+        subscriptionId: b4172030-9800-43dc-947c-05426b39e4d2
+        resourceGroup: cluster-rg
+      domainFilters:
+        - danielscholl.info

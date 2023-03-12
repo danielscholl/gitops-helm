@@ -4,7 +4,7 @@ metadata:
   name: reflector
   namespace: flux-system
 spec:
-  targetNamespace: reflector
+  targetNamespace: tools
   releaseName: reflector
   chart:
     spec:
@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: reflector
         namespace: flux-system
-      # version: "v7.x"
+      version: "v7.0.x"
   interval: 1h0m0s
   install:
     remediation:
