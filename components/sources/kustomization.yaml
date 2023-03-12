@@ -7,5 +7,5 @@ resources:
   - kiali.yaml
   - istio.yaml
   - jetstack.yaml
-  - emberstack.yaml
+  - reflector.yaml
   - podinfo.yaml
