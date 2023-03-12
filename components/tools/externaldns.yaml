@@ -2,10 +2,9 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: external-dns
-  namespace: external-dns
+  namespace: flux-system
 spec:
   targetNamespace: tools
-  releaseName: external-dns
   chart:
     spec:
       chart: external-dns
