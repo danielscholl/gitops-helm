@@ -21,12 +21,11 @@ spec:
       retries: 3
   values:
     - provider: azure
-      logLevel: debug
-      txtOnwnerId: external-dns
       azure:
-        useManagedIdentityExtension: true
+        resourceGroup: cluster-rg
         tenantId: 5cc80b30-6dfd-4dc3-bbce-aca1faf46c4d
         subscriptionId: b4172030-9800-43dc-947c-05426b39e4d2
-        resourceGroup: cluster-rg
+        useManagedIdentityExtension: true
       domainFilters:
         - danielscholl.info
+      txtOwnerId: external-dns
