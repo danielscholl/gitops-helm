@@ -8,7 +8,7 @@ spec:
   releaseName: reflector
   chart:
     spec:
-      chart: emberstack/reflector
+      chart: reflector
       sourceRef:
         kind: HelmRepository
         name: reflector
