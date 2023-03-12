@@ -4,7 +4,7 @@ metadata:
   name: reflector
   namespace: flux-system
 spec:
-  targetNamespace: tools
+  targetNamespace: reflector
   releaseName: reflector
   chart:
     spec:
