@@ -1,11 +1,11 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: replicator
+  name: reflector
   namespace: flux-system
 spec:
   targetNamespace: tools
-  releaseName: replicator
+  releaseName: reflector
   chart:
     spec:
       chart: emberstack/reflector
