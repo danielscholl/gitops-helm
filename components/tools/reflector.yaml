@@ -8,10 +8,10 @@ spec:
   releaseName: reflector
   chart:
     spec:
-      chart: reflector
+      chart: emberstack/reflector
       sourceRef:
         kind: HelmRepository
-        name: emberstack
+        name: reflector
         namespace: flux-system
       version: "v7.x"
   interval: 1h0m0s
