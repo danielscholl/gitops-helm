@@ -4,6 +4,21 @@ This repo is a sample for gitops work.
 
 ## Prerequisites
 
+Register the preview features
+
+```bash
+# Register
+az feature register --namespace "Microsoft.ContainerService" --name "EnableWorkloadIdentityPreview"
+
+# Show
+az feature show --namespace "Microsoft.ContainerService" --name "EnableWorkloadIdentityPreview"
+
+# Refresh
+az provider register --namespace Microsoft.ContainerService
+```
+
+## Deploy
+
 You will need a Kubernetes cluster.  This can be run from Azure CloudShell.
 
 ```bash
