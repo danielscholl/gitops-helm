@@ -4,8 +4,8 @@ metadata:
   name: external-dns
   namespace: flux-system
 spec:
-  targetNamespace: nginx
-  storageNamespace: nginx
+  targetNamespace: default
+  storageNamespace: default
   releaseName: external-dns
   chart:
     spec:
@@ -26,6 +26,7 @@ spec:
         tenantId: 5cc80b30-6dfd-4dc3-bbce-aca1faf46c4d
         subscriptionId: b4172030-9800-43dc-947c-05426b39e4d2
         useManagedIdentityExtension: true
+        userAssignedIdentityID: 54294266-6804-488f-b5cb-22949d298748
       domainFilters:
         - danielscholl.info
       txtOwnerId: external-dns

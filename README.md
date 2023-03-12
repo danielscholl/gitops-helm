@@ -113,12 +113,13 @@ metadata:
   name: externaldns-values
   annotations:
     reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
-    reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: external-dns"
+    reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "nginx"
 data:
   tenant_id: $(az account show --query homeTenantId -otsv)
   subscription_id: $(az account show --query id -otsv)
   resource_group: ${RESOURCE_GROUP}
   dns_domain: ${DNS_DOMAIN}
+  principal_id: $(az aks show -g $RESOURCE_GROUP -n aks-${NAME} --query "identityProfile.kubeletidentity.objectId" -otsv)
 EOF
 
 ############ 
