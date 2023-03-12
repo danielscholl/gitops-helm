@@ -5,6 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: tools
+  storageNamespace: tools
+  releaseName: external-dns
   chart:
     spec:
       chart: external-dns
