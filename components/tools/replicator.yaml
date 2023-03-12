@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: replicator
-  namespace: tools
+  namespace: flux-system
 spec:
   targetNamespace: tools
   releaseName: replicator
