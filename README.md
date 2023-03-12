@@ -40,6 +40,8 @@ az deployment group create --no-wait -g $RESOURCE_GROUP  --template-uri https://
 	keyVaultCreate=true \
 	keyVaultOfficerRolePrincipalId=$(az ad signed-in-user show --query id --out tsv) \
 	enableTelemetry=false \
+  oidcIssuer=true \
+	workloadIdentity=true \
 	fluxGitOpsAddon=true
 
 az deployment group list -g $RESOURCE_GROUP --query [].properties.provisioningState -otsv
@@ -82,7 +84,10 @@ az role assignment list --assignee $PRINCIPAL_ID --all \
 
 
 VAULT=$(az keyvault list -g $RESOURCE_GROUP --query [].name -otsv)
-az keyvault secret set --name TENANT_ID --vault-name MyKeyVault --value MyVault
+az keyvault secret set --name TENANT-ID --vault-name $VAULT --value $(az account show --query homeTenantId -otsv)
+az keyvault secret set --name SUBSCRIPTION-ID --vault-name $VAULT --value $(az account show --query id -otsv)
+az keyvault secret set --name RESOURCE-GROUP --vault-name $VAULT --value $RESOURCE_GROUP
+az keyvault secret set --name DNS-DOMAIN --vault-name $VAULT --value $DNS_DOMAIN
 
 
 # Create multiple YAML objects from stdin
