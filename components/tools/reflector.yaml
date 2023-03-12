@@ -8,12 +8,12 @@ spec:
   releaseName: reflector
   chart:
     spec:
-      chart: emberstack/reflector
+      chart: reflector
       sourceRef:
         kind: HelmRepository
         name: emberstack
         namespace: flux-system
-      version: v7.0.151
+      version: "v7.x"
   interval: 1h0m0s
   install:
     remediation:
