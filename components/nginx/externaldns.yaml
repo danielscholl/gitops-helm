@@ -4,8 +4,8 @@ metadata:
   name: external-dns
   namespace: flux-system
 spec:
-  targetNamespace: tools
-  storageNamespace: tools
+  targetNamespace: nginx
+  storageNamespace: nginx
   releaseName: external-dns
   chart:
     spec:
